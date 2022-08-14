@@ -2,7 +2,7 @@ import pandas as pd
 from ast import literal_eval
 import os
 
-
+print(os.getcwd())
 import time
 start_time = time.time()
 
@@ -96,7 +96,7 @@ def convert_string_to_list(x):
 
 
 def read_crypto_df(name):
-    df = pd.read_csv(name+'.csv',engine = 'python')
+    df = pd.read_csv('data/'+name+'.csv',engine = 'python')
     if('user_id' in df.columns):
         df.drop('user_id',inplace = True, axis = 1)
     if ('Unnamed: 0' in df.columns):
@@ -165,7 +165,7 @@ def df_merge_tweets(name,df1,df2,date1,date2):
     df_merge = df_merge[df_merge.language != 'hebrew'] 
     df_merge = df_merge[df_merge.language != 'armenian'] 
     
-    save_file = name+'_merged.csv'
+    save_file = 'data/'+name+'_merged.csv'
     
     #df_btc_merged['pos'] = df_btc_merged.apply(lambda row: analyzer.polarity_scores(row.tweet)['pos'], axis = 1)
     #df_btc_merged['neg'] = df_btc_merged.apply(lambda row: analyzer.polarity_scores(row.tweet)['neg'], axis = 1)
@@ -208,9 +208,9 @@ def output_csv(topic,dir_name):
 
     
     price_df = pd.DataFrame()
-    for x in os.listdir(dir_name):
+    for x in os.listdir('data/'+dir_name):
         if('.csv' in x):
-                df = pd.read_csv(dir_name+'/'+x, header=None, index_col = False)
+                df = pd.read_csv('data/'+dir_name+'/'+x, header=None, index_col = False)
                 price_df = pd.concat([price_df,df], axis = 0)
 
     price_df = price_df.drop(columns = 11)
@@ -228,7 +228,7 @@ def output_csv(topic,dir_name):
     crypto['code'] = dir_name
     print('Merge Complete:\t', "--- %s seconds ---" % (time.time() - merge_time))
 
-    crypto.set_index('date').to_csv('cleaned_'+topic+'_upto_'+date_2+'.csv',index = True)
+    crypto.set_index('date').to_csv('data/cleaned_'+topic+'_upto_'+date_2+'.csv',index = True)
     print('Outputting New CSV\t\t\t\t',end = '')
 
 output_csv('bitcoin','btc')
