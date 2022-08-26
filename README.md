@@ -45,7 +45,21 @@ The first ML techniques used were regression models, including:
   
 ## Clustering
 
-  - Unsupervised ML was also utilized via K-Means Clustering and Hierarchial Clustering (Agglomerative)
+  - Unsupervised ML was also utilized via: 
+    - K-Means Clustering 
+    - Hierarchial Clustering (Agglomerative)
+    - DBScan was ran as well
+
+## Simple Classification
+
+- All Classification was ran to find accuracy score and ROC and AUC
+- Confuscion Matrices were generated
+- All results were saved into a dataframe to determine the best simple classification technique
+- 
+  - kNN
+  - Logistic Regression
+  - Decision Trees
+
 
 ## Data Sources
 1. Twitter: Tweets regarding bitcoin/BTC
@@ -81,6 +95,16 @@ The first ML techniques used were regression models, including:
 - sklearn.preprocessing
 - scipy.cluster (kmean, dendrogram)
 - kneed
+
+### Classification
+- sklearn.metrics
+- sklearn.pipeline
+- sklearn.model_selection (train_test_split, cross_val_score, GridSearchCV)
+- sklearn.preprocessing  (StandardScaler, MinMaxScaler, scale)
+- sklearn.metrics (accuracy_score, classification_report, confusion_matrix, roc_curve, auc)
+- sklearn.neighbors.KNeighborsClassifier
+- sklearn.linear_model.LogisticRegression
+- sklearn.tree.DecisionTreeClassifier
 
 **Data was collected between 01 Aug 2022 up to and including 09 Aug 2022**
 

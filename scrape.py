@@ -17,8 +17,8 @@ c = twint.Config()
 c.Search = topic
 #c.Limit = 200
 c.Pandas = True
-c.Since = '2022-08-10 00:00:00'
-c.Until = '2022-08-15 00:00:00'
+c.Since = '2022-08-'+pull+' 00:00:00'
+c.Until = '2022-08-'+str(int(pull) + 3)+' 08:00:00'
 c.Pandas_clean = True
 #c.Store_csv = True
 #c.Custom = ['conversation_id', 'date','tweet', 'language', 'hashtags', 'user_id','username', 'nlikes', 'nreplies', 'nretweets']
@@ -32,13 +32,13 @@ c.Pandas_clean = True
 twint.run.Search(c)
 
 df = twint.storage.panda.Tweets_df
-#df_col = ['conversation_id', 'date','tweet', 'language', 'hashtags', 'user_id','username', 'nlikes', 'nreplies', 'nretweets']   
+df_col = ['conversation_id', 'date','tweet', 'language', 'hashtags', 'user_id','username', 'nlikes', 'nreplies', 'nretweets']   
 
 
 #df_col = df.columns
 #print(df[df_columns_interest].head(20))
 
-#df = df[df_col]
+df = df[df_col]
 df.to_csv(topic+'_'+pull+'.csv')
 print('done')
 

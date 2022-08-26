@@ -10,7 +10,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 analyzer = SentimentIntensityAnalyzer()
 
 date_1 = '2022-08-01'
-date_2 = '2022-08-10'
+date_2 = '2022-08-18'
 
 Language_dict = {
     'arabic':'ar'
@@ -209,7 +209,7 @@ def output_csv(topic,dir_name):
     
     price_df = pd.DataFrame()
     for x in os.listdir('data/'+dir_name):
-        if('.csv' in x):
+        if '.csv' in x:
                 df = pd.read_csv('data/'+dir_name+'/'+x, header=None, index_col = False)
                 price_df = pd.concat([price_df,df], axis = 0)
 
